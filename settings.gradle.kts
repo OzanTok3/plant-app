@@ -16,3 +16,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "QuizGenius"
 include(":app")
+include(":data")
+include(":core")
+include(":domain")
