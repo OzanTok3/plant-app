@@ -1,17 +1,22 @@
 package com.ozantok.quizgenius
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.MediaStore
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavGraph
-
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.ozantok.quizgenius.databinding.ActivityMainBinding
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.ozantok.quizgenius.presentation.util.makeStatusBarTransparent
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,13 +46,62 @@ class MainActivity : AppCompatActivity() {
         navGraph.setStartDestination(startDestination)
 
         navController.graph = navGraph
-
         binding.bottomNavView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.homeFragment -> binding.bottomNavView.visibility = View.VISIBLE
-                else -> binding.bottomNavView.visibility = View.GONE
+                R.id.homeFragment -> {
+                    binding.bottomNavView.visibility = View.VISIBLE
+                    binding.fabQr.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.bottomNavView.visibility = View.GONE
+                    binding.fabQr.visibility = View.GONE
+                }
             }
+        }
+
+        binding.bottomNavView.setOnItemSelectedListener { item ->
+            handleNavigationItemClick(item)
+        }
+
+        binding.fabQr.setOnClickListener {
+            openQRScanner()
+        }
+    }
+
+    private fun handleNavigationItemClick(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.homeFragment -> {
+                showToast("Home Clicked!")
+                return true
+            }
+            R.id.diagnoseFragment -> {
+                showToast("Dianogse Clicked!")
+                return true
+            }
+            R.id.myGardenFragment -> {
+                showToast("My Garden Clicked!")
+                return true
+            }
+            R.id.profileFragment -> {
+                showToast("Profile Clicked")
+                return true
+            }
+        }
+        return false
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun openQRScanner() {
+        Toast.makeText(this, "QR Scanner açılıyor", Toast.LENGTH_SHORT).show()
+        try {
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Kamera açılamadı: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
 

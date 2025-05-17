@@ -4,5 +4,14 @@
     <string name="onboarding_title_1">Welcome to <b>PlantApp</b></string>
     <string name="onboarding_title_2"><b>Take a photo to identify\nthe plant!</b></string>
     <string name="onboarding_title_3"><b>Get plant care guides</b></string>
+    <string name="terms_privacy_restore">Terms • Privacy • Restore</string>
+    <string name="after_the_3_day_free_trial_period_you_ll_be_charged_274_99_per_year_unless_you_cancel_before_the_trial_expires_yearly_subscription_is_auto_renewable">After the 3-day free trial period you’ll be charged ₺274.99 per year unless you cancel before the trial expires. Yearly Subscription is Auto-Renewable</string>
+    <string name="first_3_days_free_then_529_99_year">First 3 days free, then $529,99/year</string>
+    <string name="_1_year">1 Year</string>
+    <string name="_2_99_month_auto_renewable">$2.99/month, auto renewable</string>
+    <string name="_1_month">1 Month</string>
+    <string name="plant_app_premium"><b>Plant App</b> Premium</string>
+    <string name="access_all_features">Access All Features</string>
+    <string name="save_50">Save 50%</string>
 
 </resources>

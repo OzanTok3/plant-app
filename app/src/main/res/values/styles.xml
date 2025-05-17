@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="GreenButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:layout_width">match_parent</item>
@@ -13,4 +13,18 @@
         <item name="android:paddingRight">16dp</item>
         <item name="android:gravity">center</item>
     </style>
+
+
+    <style name="BottomNavigationTextStyle" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+
+
+    <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
+        <item name="android:textAppearanceSmallPopupMenu">@style/BottomNavigationTextStyle</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/BottomNavigationTextStyle</item>
+        <item name="textAppearancePopupMenuHeader">@style/BottomNavigationTextStyle</item>
+    </style>
+
 </resources>

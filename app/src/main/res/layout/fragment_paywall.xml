@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/roboto"
-            android:text="Keşfetmeye devam et"
+            android:text="@string/plant_app_premium"
             android:textColor="@color/white"
             android:textSize="28sp" />
 
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            android:text="Premium özelliklere erişim için hemen üye ol"
+            android:text="@string/access_all_features"
             android:textColor="#CCCCCC"
             android:textSize="16sp" />
 
@@ -71,6 +71,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button_selector"
+                        />
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -81,25 +87,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto"
-                            android:text="Aylık"
+                            android:text="@string/_1_month"
                             android:textColor="@color/white"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Her ay otomatik yenilenir"
-                            android:textColor="#AAAAAA"
-                            android:textSize="14sp" />
+                            android:text="@string/_2_99_month_auto_renewable"
+                            android:textColor="@color/white_50"
+                            android:textSize="12sp" />
                     </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto"
-                        android:text="₺59,99"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
                 </LinearLayout>
             </FrameLayout>
 
@@ -107,13 +105,22 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_paywall_buttons"
-                android:padding="16dp">
+                android:background="@drawable/bg_paywall_year_stroke"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button_selector"
+                        android:buttonTintMode="multiply"
+                        android:checked="true"
+                        />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -131,35 +138,37 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto"
-                                android:text="Yıllık"
+                                android:text="@string/_1_year"
                                 android:textColor="@color/white"
-                                android:textSize="18sp" />
+                                android:textSize="16sp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:fontFamily="@font/roboto"
-                                android:text=" • EN İYI DEĞER"
-                                android:textColor="#4CAF50"
-                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Her yıl otomatik yenilenir"
-                            android:textColor="#AAAAAA"
-                            android:textSize="14sp" />
+                            android:text="@string/first_3_days_free_then_529_99_year"
+                            android:textColor="@color/white_50"
+                            android:textSize="12sp" />
                     </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="76dp"
+                    android:layout_height="26dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_paywall_save"
+                    android:layout_gravity="end">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto"
-                        android:text="₺499,99"
                         android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:textSize="12sp"
+                        android:text="@string/save_50"/>
+
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
@@ -180,7 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:text="After the 3-day free trial period you’ll be charged ₺274.99 per year unless you cancel before the trial expires. Yearly Subscription is Auto-Renewable"
+            android:text="@string/after_the_3_day_free_trial_period_you_ll_be_charged_274_99_per_year_unless_you_cancel_before_the_trial_expires_yearly_subscription_is_auto_renewable"
             android:textColor="@color/white_50"
             android:textSize="12sp" />
 
@@ -189,9 +198,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
             android:gravity="center"
-            android:text="Terms  •  Privacy  •  Restore"
+            android:text="@string/terms_privacy_restore"
             android:textColor="@color/white_50"
-            android:textSize="14sp" />
+            android:textSize="10sp" />
     </LinearLayout>
 
 

@@ -13,5 +13,9 @@
     <color name="transparent">#00000000</color>
     <color name="green">#FF26302A</color>
     <color name="green_bg">#FF101E16</color>
+    <color name="creyola_green">#28AF6E</color>
     <color name="white_50">#80FFFFFF</color>
+    <color name="raisin_black">#24201A</color>
+    <color name="gold">#E5C990</color>
+    <color name="spanish_grey">#979798</color>
 </resources>
