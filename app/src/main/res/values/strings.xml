@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Quiz Genius</string>
+    <string name="app_name">Plant App</string>
     <string name="close">Close</string>
     <string name="onboarding_title_1">Welcome to <b>PlantApp</b></string>
     <string name="onboarding_title_2"><b>Take a photo to identify\nthe plant!</b></string>

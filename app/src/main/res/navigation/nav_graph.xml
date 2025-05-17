@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.ozantok.quizgenius.presentation.onboarding.OnboardingFragment"
+        android:name="com.ozantok.plantapp.presentation.onboarding.OnboardingFragment"
         android:label="Onboarding"
         tools:layout="@layout/fragment_onboarding">
         <action
@@ -17,12 +17,12 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ozantok.quizgenius.presentation.home.HomeFragment"
+        android:name="com.ozantok.plantapp.presentation.home.HomeFragment"
         android:label="Home" />
 
     <fragment
         android:id="@+id/paywallFragment"
-        android:name="com.ozantok.quizgenius.presentation.paywall.PaywallFragment"
+        android:name="com.ozantok.plantapp.presentation.paywall.PaywallFragment"
         android:label="Paywall"
         tools:layout="@layout/fragment_paywall" />
 

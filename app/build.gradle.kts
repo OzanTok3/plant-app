@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.ozantok.quizgenius"
+    namespace = "com.ozantok.plantapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.ozantok.quizgenius"
+        applicationId = "com.ozantok.plantapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

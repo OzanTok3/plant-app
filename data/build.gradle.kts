@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ozantok.quizgenius.data"
+    namespace = "com.ozantok.plantapp.data"
     compileSdk = 34
 
     defaultConfig {

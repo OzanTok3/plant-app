@@ -14,7 +14,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "QuizGenius"
+rootProject.name = "PlantApp"
 include(":app")
 include(":data")
 include(":core")
