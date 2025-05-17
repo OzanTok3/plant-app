@@ -1,138 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/paywall_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@color/white"
-    tools:context=".presentation.paywall.PaywallFragment">
+    android:background="@color/green_bg">
 
-    <!-- Kapatma butonu (X) sağ üstte, yatayda align için wrapper -->
+
+    <ImageView
+        android:id="@+id/paywall_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:src="@drawable/paywall" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        <View
-            android:layout_width="0dp"
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto"
+            android:text="Keşfetmeye devam et"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
 
-        <ImageButton
-            android:id="@+id/btnClose"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/close"
-            android:src="@drawable/icon_close"
-            app:tint="@color/black" />
-    </LinearLayout>
 
-    <!-- Başlık -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upgrade to Premium"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="48dp"
-        android:layout_gravity="center_horizontal" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="Premium özelliklere erişim için hemen üye ol"
+            android:textColor="#CCCCCC"
+            android:textSize="16sp" />
 
-    <!-- Açıklama -->
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get unlimited access to all quizzes, remove ads, and enjoy premium features."
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFeatures"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/transparent"
+            android:orientation="horizontal"
+            android:overScrollMode="never" />
 
-    <!-- Premium özellikler yatay scroll -->
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fillViewport="true"
-        android:scrollbars="none">
 
         <LinearLayout
-            android:id="@+id/llFeatures"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:orientation="vertical">
 
-            <!-- Örnek özellik kutuları -->
-            <LinearLayout
-                android:layout_width="200dp"
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/paywall"
-                android:padding="16dp"
-                android:layout_marginEnd="16dp">
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_paywall_buttons"
+                android:padding="16dp">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/icon_close"
-                    app:tint="@color/material_dynamic_primary0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Unlimited quizzes"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="200dp"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="Aylık"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Her ay otomatik yenilenir"
+                            android:textColor="#AAAAAA"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="₺59,99"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:layout_marginEnd="16dp">
+                android:background="@drawable/bg_paywall_buttons"
+                android:padding="16dp">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/icon_close"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ad-free experience"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
+                    android:orientation="horizontal">
 
-            <!-- İstersen daha fazla özellik ekleyebilirsin -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="Yıllık"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/roboto"
+                                android:text=" • EN İYI DEĞER"
+                                android:textColor="#4CAF50"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Her yıl otomatik yenilenir"
+                            android:textColor="#AAAAAA"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="₺499,99"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
-    </HorizontalScrollView>
 
-    <!-- Abonelik butonu -->
-    <Button
-        android:id="@+id/btnSubscribe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Subscribe Now"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/white"
-        android:padding="16dp"
-        android:textAllCaps="false"
-        />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/button_continue"
+            style="@style/GreenButtonStyle"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto"
+            android:text="Try free for 3 days"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="After the 3-day free trial period you’ll be charged ₺274.99 per year unless you cancel before the trial expires. Yearly Subscription is Auto-Renewable"
+            android:textColor="@color/white_50"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="Terms  •  Privacy  •  Restore"
+            android:textColor="@color/white_50"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/button_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp"
+        android:background="@android:color/transparent"
+        android:padding="12dp"
+        android:src="@drawable/icon_close" />
+</FrameLayout>

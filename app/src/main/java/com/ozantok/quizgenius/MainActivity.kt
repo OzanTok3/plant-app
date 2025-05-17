@@ -1,14 +1,21 @@
 package com.ozantok.quizgenius
 
+import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavGraph
 
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.ozantok.quizgenius.databinding.ActivityMainBinding
+import androidx.navigation.ui.setupWithNavController
+import com.ozantok.quizgenius.presentation.util.makeStatusBarTransparent
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -17,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        window.decorView.post {
+            makeStatusBarTransparent(binding.root)
+        }
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
@@ -31,8 +42,13 @@ class MainActivity : AppCompatActivity() {
 
         navController.graph = navGraph
 
-        setSupportActionBar(binding.toolbar)
-        setupActionBarWithNavController(navController)
+        binding.bottomNavView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment -> binding.bottomNavView.visibility = View.VISIBLE
+                else -> binding.bottomNavView.visibility = View.GONE
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

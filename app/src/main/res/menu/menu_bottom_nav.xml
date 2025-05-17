@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/icon_close"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/diagnoseFragment"
+        android:icon="@drawable/icon_close"
+        android:title="Diagnose" />
+
+    <item
+        android:id="@+id/qrFragment"
+        android:icon="@drawable/icon_close"
+        android:title=""
+        android:enabled="true" />
+
+    <item
+        android:id="@+id/myGardenFragment"
+        android:icon="@drawable/icon_close"
+        android:title="My Garden" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/icon_close"
+        android:title="Profile" />
+
+</menu>

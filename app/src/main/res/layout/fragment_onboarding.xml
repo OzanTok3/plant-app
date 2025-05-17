@@ -1,31 +1,50 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_main"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="40dp"
         android:layout_weight="1" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_gravity="center"
-        app:tabIndicatorColor="@color/black"
-        app:tabIndicatorFullWidth="false"
-        app:tabIndicatorHeight="4dp"
-        app:tabGravity="center" />
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/btnNext"
+            style="@style/GreenButtonStyle"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:text="Get Started" />
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/background_main"
+            app:tabBackground="@android:color/transparent"
+            app:tabGravity="center"
+            app:tabIndicator="@null"
+            app:tabPaddingEnd="2dp"
+            app:tabPaddingStart="2dp"
+            app:tabRippleColor="@null" />
+
+    </LinearLayout>
+
+
+</FrameLayout>

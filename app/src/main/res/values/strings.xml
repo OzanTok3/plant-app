@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Quiz Genius</string>
     <string name="close">Close</string>
+    <string name="onboarding_title_1">Welcome to <b>PlantApp</b></string>
+    <string name="onboarding_title_2"><b>Take a photo to identify\nthe plant!</b></string>
+    <string name="onboarding_title_3"><b>Get plant care guides</b></string>
+
 </resources>
