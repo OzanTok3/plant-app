@@ -4,20 +4,28 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ozantok.plantapp.databinding.FragmentHomeBinding
-import com.ozantok.plantapp.presentation.util.UIState
+import com.ozantok.core.util.UIState
+import com.ozantok.plantapp.presentation.util.NetworkUtils
 import com.ozantok.plantapp.presentation.util.addSoftShadow
 import com.ozantok.plantapp.presentation.util.applyGoldGradient
 import com.ozantok.plantapp.presentation.util.makeStatusBarTransparent
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -27,6 +35,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: HomeViewModel by viewModels()
+    private val searchViewModel: SearchViewModel by viewModels()
 
     private lateinit var questionsAdapter: QuestionsAdapter
     private lateinit var categoriesAdapter: CategoriesAdapter
@@ -49,7 +58,12 @@ class HomeFragment : Fragment() {
             makeStatusBarTransparent(view, isLightStatusBar = true)
         }
         applyGradientToTextViews()
-        viewModel.fetchHomeData()
+        if (context?.let { NetworkUtils.isNetworkAvailable(it) } == true) {
+            viewModel.fetchHomeData()
+        } else {
+            Toast.makeText(context, "İnternet bağlantısı yok", Toast.LENGTH_SHORT).show()
+        }
+        setupSearchBar()
     }
 
     private fun setupRecyclerViews() {
@@ -130,16 +144,26 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupSearchBar() {
-        binding.etSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {}
-        })
-
+        lifecycleScope.launch {
+            callbackFlow {
+                val watcher = object : TextWatcher {
+                    override fun afterTextChanged(s: Editable?) {
+                        trySend(s.toString())
+                    }
+                    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                }
+                binding.etSearch.addTextChangedListener(watcher)
+                awaitClose { binding.etSearch.removeTextChangedListener(watcher) }
+            }
+                .debounce(3000L) // 3 saniye bekler
+                .filter { it.isNotBlank() }
+                .collect { query ->
+                    searchViewModel.saveQuery(query)
+                    Log.d("DebouncedQuery", query)
+                }
+        }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

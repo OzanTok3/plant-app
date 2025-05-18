@@ -2,11 +2,13 @@ package com.ozantok.plantapp.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ozantok.core.util.DispatcherProvider
+import com.ozantok.core.util.UIState
 import com.ozantok.plantapp.domain.model.Category
 import com.ozantok.plantapp.domain.model.Question
 import com.ozantok.plantapp.domain.usecase.GetCategoriesUseCase
 import com.ozantok.plantapp.domain.usecase.GetQuestionsUseCase
-import com.ozantok.plantapp.presentation.util.UIState
+
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +18,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getQuestionsUseCase: GetQuestionsUseCase,
-    private val getCategoriesUseCase: GetCategoriesUseCase
+    private val getCategoriesUseCase: GetCategoriesUseCase,
+    private val dispatcherProvider: DispatcherProvider
 ) : ViewModel() {
 
     private val _questions = MutableStateFlow<List<Question>>(emptyList())
@@ -29,7 +32,7 @@ class HomeViewModel @Inject constructor(
     val uiState: StateFlow<UIState> = _uiState
 
     fun fetchHomeData() {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcherProvider.io) {
             _uiState.value = UIState.LOADING
             try {
                 val questions = getQuestionsUseCase()
