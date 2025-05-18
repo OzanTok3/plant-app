@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import com.ozantok.plantapp.databinding.ActivityMainBinding
 import androidx.navigation.ui.setupWithNavController
+import com.ozantok.plantapp.databinding.ActivityMainBinding
 import com.ozantok.plantapp.presentation.util.makeStatusBarTransparent
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         val onboardingCompleted = prefs.getBoolean("onboarding_completed", false)
 
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
-        val startDestination = if (onboardingCompleted) R.id.homeFragment else R.id.onboardingFragment
+        val startDestination =
+            if (onboardingCompleted) R.id.homeFragment else R.id.onboardingFragment
         navGraph.setStartDestination(startDestination)
 
         navController.graph = navGraph
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNavView.visibility = View.VISIBLE
                     binding.fabQr.visibility = View.VISIBLE
                 }
+
                 else -> {
                     binding.bottomNavView.visibility = View.GONE
                     binding.fabQr.visibility = View.GONE
@@ -69,14 +71,17 @@ class MainActivity : AppCompatActivity() {
                 showToast("Home Clicked!")
                 return true
             }
+
             R.id.diagnoseFragment -> {
                 showToast("Dianogse Clicked!")
                 return true
             }
+
             R.id.myGardenFragment -> {
                 showToast("My Garden Clicked!")
                 return true
             }
+
             R.id.profileFragment -> {
                 showToast("Profile Clicked")
                 return true

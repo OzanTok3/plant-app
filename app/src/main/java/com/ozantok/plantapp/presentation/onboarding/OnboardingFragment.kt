@@ -34,7 +34,11 @@ class OnboardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         pages = listOf(
-            OnboardingPage(getString(R.string.onboarding_title_1), "Identify more than 3000+ plants and 88% accuracy.", R.drawable.onboarding1),
+            OnboardingPage(
+                getString(R.string.onboarding_title_1),
+                "Identify more than 3000+ plants and 88% accuracy.",
+                R.drawable.onboarding1
+            ),
             OnboardingPage(getString(R.string.onboarding_title_2), "", R.drawable.onboarding2),
             OnboardingPage(getString(R.string.onboarding_title_3), "", R.drawable.onboarding3)
         )
@@ -42,7 +46,7 @@ class OnboardingFragment : Fragment() {
         adapter = OnboardingAdapter(pages)
         binding.viewPager.adapter = adapter
 
-        view.post{
+        view.post {
             makeStatusBarTransparent(view, isLightStatusBar = true)
         }
 

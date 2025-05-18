@@ -2,12 +2,12 @@ package com.ozantok.plantapp.presentation.util
 
 import android.app.Activity
 import android.graphics.Color
-import android.view.View
-import androidx.core.view.WindowCompat
-import androidx.fragment.app.Fragment
 import android.graphics.LinearGradient
 import android.graphics.Shader
+import android.view.View
 import android.widget.TextView
+import androidx.core.view.WindowCompat
+import androidx.fragment.app.Fragment
 
 fun Fragment.makeStatusBarTransparent(view: View, isLightStatusBar: Boolean = true) {
     val window = requireActivity().window

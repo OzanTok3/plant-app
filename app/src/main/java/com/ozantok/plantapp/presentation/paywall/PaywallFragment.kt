@@ -30,7 +30,7 @@ class PaywallFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.post {
-            makeStatusBarTransparent(view,isLightStatusBar = false)
+            makeStatusBarTransparent(view, isLightStatusBar = false)
         }
 
         binding.buttonClose.setOnClickListener {

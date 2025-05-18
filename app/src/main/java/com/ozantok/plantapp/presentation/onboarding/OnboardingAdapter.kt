@@ -19,14 +19,16 @@ class OnboardingAdapter(private val pages: List<OnboardingPage>) :
         private val titleText: TextView = itemView.findViewById(R.id.tvTitle)
         private val descText: TextView = itemView.findViewById(R.id.tvDescription)
         private val imageView: ImageView = itemView.findViewById(R.id.ivImage)
-        private val imageViewSecondAndThirdPages: ImageView = itemView.findViewById(R.id.ivImageSecondAndThirdPages)
+        private val imageViewSecondAndThirdPages: ImageView =
+            itemView.findViewById(R.id.ivImageSecondAndThirdPages)
 
         fun bind(page: OnboardingPage) {
             val context = itemView.context
             descText.text = page.description
             imageView.setImageResource(page.imageRes)
 
-            val secondImageLayoutParams = imageViewSecondAndThirdPages.layoutParams as ViewGroup.MarginLayoutParams
+            val secondImageLayoutParams =
+                imageViewSecondAndThirdPages.layoutParams as ViewGroup.MarginLayoutParams
 
             when (adapterPosition) {
                 0 -> {
@@ -49,7 +51,7 @@ class OnboardingAdapter(private val pages: List<OnboardingPage>) :
                 }
 
                 1 -> {
-                    val fullText ="Take a photo to identify\nthe plant!"
+                    val fullText = "Take a photo to identify\nthe plant!"
                     val spannable = SpannableString(fullText)
 
                     val typeface = ResourcesCompat.getFont(context, R.font.roboto_bold)

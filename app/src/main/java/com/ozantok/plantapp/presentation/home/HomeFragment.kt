@@ -9,14 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ozantok.plantapp.databinding.FragmentHomeBinding
 import com.ozantok.core.util.UIState
+import com.ozantok.plantapp.databinding.FragmentHomeBinding
 import com.ozantok.plantapp.presentation.util.NetworkUtils
 import com.ozantok.plantapp.presentation.util.addSoftShadow
 import com.ozantok.plantapp.presentation.util.applyGoldGradient
@@ -150,13 +149,27 @@ class HomeFragment : Fragment() {
                     override fun afterTextChanged(s: Editable?) {
                         trySend(s.toString())
                     }
-                    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+                    override fun beforeTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
+                    }
+
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
+                    }
                 }
                 binding.etSearch.addTextChangedListener(watcher)
                 awaitClose { binding.etSearch.removeTextChangedListener(watcher) }
             }
-                .debounce(3000L) // 3 saniye bekler
+                .debounce(3000L)
                 .filter { it.isNotBlank() }
                 .collect { query ->
                     searchViewModel.saveQuery(query)
