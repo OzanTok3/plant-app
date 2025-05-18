@@ -115,10 +115,9 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/radio_button_selector"
-                        android:buttonTintMode="multiply"
-                        android:checked="true"
-                        />
+                        android:drawableLeft="@drawable/radio_button_selector"
+                        android:button="@null"
+                        android:checked="true"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
